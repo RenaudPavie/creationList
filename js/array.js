@@ -1,19 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>exo liste fruits</title>
-</head>
-<body>
-	<input type="text" id="newFruit">
-	<input type="button" value="Add fruit" onclick="ajouterFruit()">
-	<ul id="fruitList"></ul>
-
-
-<button onclick="debug()">Debug</button>
-
-
-	<script>
-		var fruits = [];
+var fruits = [];
 		
 
 		function delette(pos) {
@@ -36,14 +21,19 @@
 					var button = '<button onclick="delette('+i+')">Supprimer</button>';
 					document.getElementById("fruitList").innerHTML +='<li>'+fruits[i]+button+'</li>';	
 				}
-		}	
-		
+			
+		}
 
 		function debug() {
 			console.log(fruits)
 		}
 
-	</script>
+		function keyPress(){
+			if (event.keyCode == 13) {
+				ajouterFruit();
+			}
+		}
 
-</body>
-</html>
+
+document.getElementById('addFruit').addEventListener('click',ajouterFruit);
+document.getElementById('newFruit').addEventListener('keypress',keyPress);
